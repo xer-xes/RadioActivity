@@ -5,6 +5,7 @@ using UnityEngine;
 public class ElementsInstantiate : MonoBehaviour
 {
     private static ElementsInstantiate instance = null;
+    [SerializeField] private GameObject elementBox;
 
     public static ElementsInstantiate Instance
     {
@@ -39,6 +40,7 @@ public class ElementsInstantiate : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         GameObject prefab = Instantiate(Element);
+        prefab.transform.parent = elementBox.transform;
         prefab.transform.position = new Vector3(Random.Range(-8, 8), prefab.transform.position.y, Random.Range(-8, 8));
         StartCoroutine(Elements());
     }

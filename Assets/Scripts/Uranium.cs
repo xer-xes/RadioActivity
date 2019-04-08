@@ -5,6 +5,9 @@ using UnityEngine;
 public class Uranium : MonoBehaviour
 {
     public GameObject gameObject;
+    [SerializeField] private GameObject elementBox;
+    [SerializeField] private GameObject executioner;
+    [SerializeField] private GameObject element;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,10 @@ public class Uranium : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Thorium"))
         {
-            gameObject.SetActive(false);
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            Destroy(elementBox.gameObject);
+            Destroy(executioner.gameObject);
+            Destroy(element.gameObject);
         }
     }
 }
